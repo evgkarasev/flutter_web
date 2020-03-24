@@ -4,7 +4,7 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.black54,
         appBar: AppBar(
           title: Text('My Web App'),
           backgroundColor: Colors.blueGrey[500],
