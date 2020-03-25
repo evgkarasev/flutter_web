@@ -42,6 +42,7 @@ class MyApp extends StatelessWidget {
                 width: 150,
                 child: Divider(
                   color: Colors.teal.shade100,
+                  thickness: 1,
                 ),
               ),
               Card(
