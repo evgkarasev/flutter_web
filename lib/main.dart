@@ -1,91 +1,102 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  return runApp(
+    MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          backgroundColor: Colors.red,
+          title: Text('Dicee'),
+        ),
+        body: DicePage(),
+      ),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class DicePage extends StatefulWidget {
+  @override
+  _DicePageState createState() => _DicePageState();
+}
+
+class _DicePageState extends State<DicePage> {
+  int leftDiceNum = Random().nextInt(6) + 1;
+  int rightDiceNum = Random().nextInt(6) + 1;
+
+  void stateUpdate() {
+    setState(() {
+      leftDiceNum = Random().nextInt(6) + 1;
+      rightDiceNum = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.teal,
-        body: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Spacer(
+            flex: 2,
+          ),
+          Row(
             children: <Widget>[
-              CircleAvatar(
-                radius: 40,
-                backgroundImage: AssetImage('images/manmakarov.jpg'),
+              Spacer(
+                flex: 2,
               ),
-              Text(
-                'Piter Norton',
-                style: TextStyle(
-                  fontFamily: 'Pacifico',
-                  fontSize: 25,
-                  color: Colors.white,
+              Expanded(
+                flex: 4,
+                child: FlatButton(
+                  onPressed: stateUpdate,
+                  child: Image.asset('images/dice$leftDiceNum.png'),
                 ),
               ),
-              Text(
-                'OUT OF THE BOX THINKER',
-                style: TextStyle(
-                  fontFamily: 'SourceSansPro',
-                  fontWeight: FontWeight.w200,
-                  fontSize: 15,
-                  letterSpacing: 2.5,
-                  color: Colors.teal.shade50,
+              Spacer(),
+              Expanded(
+                flex: 4,
+                child: FlatButton(
+                  onPressed: stateUpdate,
+                  child: Image.asset('images/dice$rightDiceNum.png'),
                 ),
               ),
-              SizedBox(
-                height: 20,
-                width: 150,
-                child: Divider(
-                  color: Colors.teal.shade100,
-                  thickness: 1,
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.phone,
-                    size: 25,
-                    color: Colors.teal.shade700,
-                  ),
-                  title: Text(
-                    '+44 123 456 7890',
-                    style: TextStyle(
-                      fontFamily: 'SourceSansPro',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.teal.shade700,
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                child: ListTile(
-                  leading: Icon(
-                    Icons.email,
-                    size: 25,
-                    color: Colors.teal.shade700,
-                  ),
-                  title: Text(
-                    'piter.norton@outlook.com',
-                    style: TextStyle(
-                      fontFamily: 'SourceSansPro',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.teal.shade700,
-                    ),
-                  ),
-                ),
+              Spacer(
+                flex: 2,
               ),
             ],
           ),
-        ),
+          Spacer(
+            flex: 1,
+          ),
+          Row(
+            children: <Widget>[
+              Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                flex: 4,
+                child: FlatButton(
+                  onPressed: stateUpdate,
+                  child: Image.asset('images/dice$leftDiceNum.png'),
+                ),
+              ),
+              Spacer(),
+              Expanded(
+                flex: 4,
+                child: FlatButton(
+                  onPressed: stateUpdate,
+                  child: Image.asset('images/dice$rightDiceNum.png'),
+                ),
+              ),
+              Spacer(
+                flex: 2,
+              ),
+            ],
+          ),
+          Spacer(
+            flex: 2,
+          ),
+        ],
       ),
     );
   }
