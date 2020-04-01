@@ -22,13 +22,11 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  int leftDiceNum = Random().nextInt(6) + 1;
-  int rightDiceNum = Random().nextInt(6) + 1;
+  List<int> dices = List.generate(4, (_) => Random().nextInt(6) + 1);
 
   void stateUpdate() {
     setState(() {
-      leftDiceNum = Random().nextInt(6) + 1;
-      rightDiceNum = Random().nextInt(6) + 1;
+      dices = List.generate(4, (_) => Random().nextInt(6) + 1);
     });
   }
 
@@ -49,7 +47,7 @@ class _DicePageState extends State<DicePage> {
                 flex: 4,
                 child: FlatButton(
                   onPressed: stateUpdate,
-                  child: Image.asset('images/dice$leftDiceNum.png'),
+                  child: Image.asset('images/dice${dices[0]}.png'),
                 ),
               ),
               Spacer(),
@@ -57,7 +55,7 @@ class _DicePageState extends State<DicePage> {
                 flex: 4,
                 child: FlatButton(
                   onPressed: stateUpdate,
-                  child: Image.asset('images/dice$rightDiceNum.png'),
+                  child: Image.asset('images/dice${dices[1]}.png'),
                 ),
               ),
               Spacer(
@@ -77,7 +75,7 @@ class _DicePageState extends State<DicePage> {
                 flex: 4,
                 child: FlatButton(
                   onPressed: stateUpdate,
-                  child: Image.asset('images/dice$leftDiceNum.png'),
+                  child: Image.asset('images/dice${dices[2]}.png'),
                 ),
               ),
               Spacer(),
@@ -85,7 +83,7 @@ class _DicePageState extends State<DicePage> {
                 flex: 4,
                 child: FlatButton(
                   onPressed: stateUpdate,
-                  child: Image.asset('images/dice$rightDiceNum.png'),
+                  child: Image.asset('images/dice${dices[3]}.png'),
                 ),
               ),
               Spacer(
